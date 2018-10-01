@@ -17,7 +17,7 @@ const PHONEBOOK = [
 
 const phoneNumber = 197; //Test phone number
 
-var findPhone = (PHONEBOOK, phoneNumber) => {
+var findPhoneNumber = (PHONEBOOK, phoneNumber) => {
   for (let i=0; i<PHONEBOOK.length; i++) {
     if (PHONEBOOK[i].phone === phoneNumber) {
       return PHONEBOOK[i];
@@ -26,6 +26,6 @@ var findPhone = (PHONEBOOK, phoneNumber) => {
 return null;
 }
 
-const result = findPhone(PHONEBOOK, phoneNumber)
+const contactInfo = findPhoneNumber(PHONEBOOK, phoneNumber)
 
-console.log((result === null) ? "Phone number doesn't exist in phonebook" : `This is ${result.name}'s phone number: ${result.phone}`)
+console.log((contactInfo === null) ? "Phone number doesn't exist in phonebook" : `This is ${contactInfo.name}'s phone number: ${contactInfo.phone}`)
