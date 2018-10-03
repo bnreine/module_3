@@ -1,0 +1,141 @@
+1. In your own words, explain what clean code is and why it is important.
+
+A. Clean code is readable, maintainable, and simple.  It's important to write clean code so that others can work with and understand your code, especially
+on large, complex projects.
+
+2. Read this article about Toyota and their use of bad code. Although you may not yet understand all of the topics discussed, think about another
+commonly used object that relies on computers and explain what would happen if the code was not created to an acceptable standard.
+
+A. An airplane relies on computers to control the wings during a gust of wind.  If the software is faulty, the plane could crash.
+
+3. Would you consider the following to be clean code? Explain why or why not. If not, refactor the code.
+
+A. No.  Here are some reasons why it's not:
+
+-Its not self-documenting (too many comments).
+-The naming is not semantic (eg. "do" for the function name).
+-It's not nested
+-It assigns variables that are not necessary nor useful (eg. variable "z")
+
+
+Refactored version:
+
+FUNCTION convertTemperature(value, unit)
+  IF (unit = "Fahrenheit") THEN
+    PRINT (value-32) * (5/9)
+  ELSE IF (unit = "Celsius") THEN
+    PRINT value * 1.8000 + 32.00
+  END IF
+END FUNCTION
+
+
+4.Would you consider the following to be clean code? Explain why or why not. If not, refactor the code.
+
+A. No.  Here are some reasons why:
+
+-You don't need to set percentage, just print it
+-The variables should be something like "part" and "whole".  "sum" and "total" both imply "whole"/"total"
+-Don't abbreviate words in function or variable names (eg. "calcPercent")
+-The "NOT" statement is too mathematical, just say "not ="
+
+Refactored version:
+
+FUNCTION calculatePercent(part, whole)
+  IF whole NOT = 0 THEN
+    PRINT part / whole * 100
+  ELSE
+    PRINT "Sorry, cannot divide by 0"
+  END IF
+END FUNCTION
+
+
+5.Using pseudocode, refactor the code for the following examples using the principles you have learned in this checkpoint.
+
+a. The following function prints the subtotal of a customer's transaction and receives payment accordingly.
+
+Refactored version:
+
+//It was not clear to me how getPayment interacted with the data, so I defined new functions for charging the client that seemed more intuitive to me.
+
+FUNCTION checkOutCustomer(subtotal, percentDiscount, paymentType)
+  CALL calculateTotalOwed(subtotal, percentDiscount) RETURNING totalOwed
+  CALL requestPayment(totalOwed, paymentType) RETURNING nothing
+END FUNCTION
+
+FUNCTION calculateTotalOwed(subtotal, percentDiscount)
+  SET totalOwed to subTotal * (1-percentDiscount / 100) * (1 + taxPercent / 100)
+  PRINT "You owe: " + totalOwed
+  RETURN totalOwed
+END FUNCTION
+
+FUNCTION requestPayment(totalOwed, paymentType)
+  IF paymentType = 'CASH' THEN
+    CALL chargeCash(totalOwed) RETURNING amountPaid
+    PRINT "Change due: " + amountPaid - totalOwed
+  ELSE IF paymentType = 'CREDIT CARD' THEN
+    CALL chargeCreditCard(totalOwed) RETURNING amountPaid
+    PRINT "We charged you: " + amountPaid
+  END IF
+END FUNCTION
+
+
+b. The following function checks out a book if there are no issues with the guest's account.
+
+Refactored version:
+
+FUNCTION checkoutBook(book, guest)
+  IF guest.isAccountActive and NOT(guest.hasOverdueBooks) and (guest.outstandingFees = 0) THEN
+    APPEND book to guest.books
+    SET book.status to "Checked Out"
+    PRINT "Your books have been issued."
+  ELSE
+    PRINT "Unable to check out book."
+  END IF
+END FUNCTION
+
+
+c. The following class is a code snippet that should support the transactions a customer can perform at an ATM.
+
+Refactored version:
+
+//I don't fully understand what the last two functions intend.  I interpret them as promotional offers and therefore should
+go in a separate promotions class
+
+CLASS BankAccountTransactions
+
+ FUNCTION displayBalance
+    PRINT balance
+ END FUNCTION
+
+ FUNCTION deposit(amount)
+    SET balance to balance + amount
+ END FUNCTION
+
+ FUNCTION withdraw(amount)
+     IF balance > amount THEN
+       SET balance to balance - amount
+     END
+ END FUNCTION
+
+ ....
+ ....
+ ....
+
+END
+
+
+CLASS BankAccountPromotions
+
+FUNCTION hasCreditCard
+    IF NOT(customer.hasCreditCard) THEN
+        CALL offerCreditCard
+    END
+END FUNCTION
+
+FUNCTION hasCheckingAccount
+    IF NOT(customer.hasCheckingAccount) THEN
+        CALL offerCheckingAccount
+    END
+END FUNCTION
+
+END
