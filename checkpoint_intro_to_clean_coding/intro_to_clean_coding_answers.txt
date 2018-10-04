@@ -126,16 +126,139 @@ END
 
 CLASS BankAccountPromotions
 
-FUNCTION hasCreditCard
+  FUNCTION hasCreditCard
     IF NOT(customer.hasCreditCard) THEN
         CALL offerCreditCard
     END
-END FUNCTION
+  END FUNCTION
 
-FUNCTION hasCheckingAccount
+  FUNCTION hasCheckingAccount
     IF NOT(customer.hasCheckingAccount) THEN
         CALL offerCheckingAccount
     END
-END FUNCTION
+  END FUNCTION
 
 END
+
+
+
+
+Programming Questions
+You may do the following problems in any language of your choice. Use the clean code principles
+taught in this section while writing the code.
+
+6. Square: Given an array of integers, find out whether the sum of the integers
+is a perfect square. If it is a perfect square, return the square root, otherwise return the sum.
+
+Pseudocode:
+
+FUNCTION calculateSum(numberList)
+  INIT sum to 0
+  FOR each number in numberList
+    SET sum to sum + number
+  END FOR
+END FUNCTION
+
+FUNCTION findSquareRoot(numberList)
+  CALL calculateSum with numberList RETURNING sum
+  SET counter to 0
+  WHILE counter^2 < sum
+    SET counter to counter + 1
+  END WHILE
+  IF counter^2 = sum THEN
+    RETURN counter
+  ELSE
+    RETURN sum
+  END IF
+END FUNCTION
+
+
+JavaScript (ES6) Implementation:
+
+let numberList = [1,2,4,6,7,5];
+
+let findSquareRoot = numberList => {
+  const sum = calculateSum(numberList);
+  let counter = 0;
+  while (counter ** 2 < sum) {
+    counter += 1;
+  }
+  if (counter ** 2 === sum) {
+    return counter;
+  } else {
+    return sum;
+  }
+}
+
+
+let calculateSum = numberList => {
+  let sum = 0;
+  numberList.forEach( listElement => {
+    sum += listElement;
+  });
+  return sum;
+}
+
+console.log(findSquareRoot(numberList));
+
+
+7. Duplicate Given an array of integers, find out whether the array contains
+any duplicate elements. The function should return true if any value appears at
+ least twice in the array, and false if every element is distinct.
+
+Pseudocode (1st draft):
+
+FUNCTION isDuplicatePresent(numberList)
+  FOR each outerNumber in numberList starting at the second
+    FOR each innerNumber in numberList starting at 1 past outerNumber
+      IF outerNumber = innerNumber THEN
+        RETURN true
+      END IF
+    END FOR
+    SET outerNumber to 1 past outerNumber
+  END FOR
+  RETURN false
+END FUNCTION
+
+Pseudocode (refactored):
+
+FUNCTION isDuplicate(numberList)
+  FOR each outerNumber in numberList starting at the second
+    CALL isInnerDuplicate(numberList, outerNumber) RETURNING isInnerDuplicate
+    If isInnerDuplicate THEN
+      RETURN true
+    END IF
+    SET outerNumber to outerNumber + 1
+  END FOR
+  RETURN false
+END FUNCTION
+
+
+
+
+
+FUNCTION isInnerDuplicate(numberList, outerNumber)
+  FOR each innerNumber in numberList starting at outerNumber + 1
+    IF outerNumber = innerNumber THEN
+      RETURN true
+    END IF
+  END FOR
+  RETURN false
+END FUNCTION
+
+
+let numberList = [1,5,2,1,3];
+let outerIndex = 0;
+
+let isInnerDuplicate = (numberList, outerIndex) => {
+
+
+  let newNumberList = numberList.filter( (innerNumber, innerIndex) => { innerIndex >= outerIndex +1 }).forEach( innerNumber => {
+    if numberList[outerIndex] === innerNumber {
+      return true;
+    }
+  return false;
+  });
+}
+
+console.log(isInnerDuplicate(numberList, outerIndex));
