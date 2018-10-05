@@ -1,0 +1,135 @@
+1. A line of people at an amusement park ride.
+
+-The line is composed of members, represented as strings.
+-There is a front to the line, as well as a back.
+-When someone enters the line, place them at the end.
+-People may leave the line whenever they see fit, and those behind them take their place.
+
+
+Given the above real-world information, use an array data structure to code the following solution.
+
+a) Use an array input: ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+b) Insert a new person, "Mary" at the end of the line. In other words, you should insert Mary after Mike.
+c) Find a person in line named "Josh." This function should return the position of 2 in the array, (recall that arrays are 0-based).
+d) Find a person in line named "Emily." What should your function return if it does not find the item in the array?
+e) What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
+f) If Patrick wants to leave the line, how would you delete him from the array?
+
+Solution:
+
+a)
+const line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+
+b)
+const line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+newPerson = "Mary";
+
+const insertPerson = (line, newPerson) => {
+  let newLine = line.slice();
+  newLine[line.length] = newPerson;
+  return newLine;
+}
+
+console.log(insertPerson(line, newPerson)); //prints to console: ["Vivian", "Ava", "Josh", "Patrick", "Mike", "Mary"]
+
+c)
+const line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+const personSearch = "Josh";
+
+const findPerson = (line, personSearch) => {
+  for (let lineIndex = 0; lineIndex < line.length; lineIndex ++) {
+    if (personSearch === line[lineIndex]) {
+      return lineIndex;
+    }
+  }
+  return null;
+}
+
+console.log(findPerson(line, personSearch)); //prints 2
+
+d)
+const line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+const personSearch = "Emily";
+
+const findPerson = (line, personSearch) => {
+  for (let lineIndex = 0; lineIndex < line.length; lineIndex ++) {
+    if (personSearch === line[lineIndex]) {
+      console.log(`${personSearch} is at index ${lineIndex} in line.`)
+      return;
+    }
+  }
+  console.log(`${personSearch} is not in line.`)
+}
+
+findPerson(line, personSearch); //prints to console "Emily is not in line"
+
+e)
+const line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+const cuttedPerson = "Ava";
+const cutterPerson = "Melissa"
+
+const cutLine = (line, cuttedPerson, cutterPerson) => {
+  let newLine = [];
+  const cuttedIndex = findPerson(line, cuttedPerson);
+  for (let newLineIndex = 0; newLineIndex < line.length + 1; newLineIndex ++) {
+    if (newLineIndex < cuttedIndex) {
+      newLine[newLineIndex] = line[newLineIndex];
+    } else if (newLineIndex === cuttedIndex) {
+      newLine[newLineIndex] = cutterPerson;
+    } else {
+      newLine[newLineIndex] = line[newLineIndex - 1];
+    }
+  }
+  const finalizedLine = newLine.slice();
+  return finalizedLine;
+}
+
+
+const findPerson = (line, personSearch) => {
+  for (let lineIndex = 0; lineIndex < line.length; lineIndex ++) {
+    if (personSearch === line[lineIndex]) {
+      return lineIndex;
+    }
+  }
+  return null;
+}
+
+console.log(cutLine(line, cuttedPerson, cutterPerson));
+
+f)
+const line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+const leaver = "Patrick";
+
+const leaveLine = (line, leaver) => {
+  let newLine = [];
+  const leaverIndex = findPerson(line, leaver);
+  for (let newLineIndex = 0; newLineIndex < line.length - 1; newLineIndex ++) {
+    if (newLineIndex < leaverIndex) {
+      newLine[newLineIndex] = line[newLineIndex];
+    } else {
+      newLine[newLineIndex] = line[newLineIndex + 1];
+    }
+  }
+  const finalizedLine = newLine.slice();
+  return finalizedLine;
+}
+
+
+const findPerson = (line, personSearch) => {
+  for (let lineIndex = 0; lineIndex < line.length; lineIndex ++) {
+    if (personSearch === line[lineIndex]) {
+      return lineIndex;
+    }
+  }
+  return null;
+}
+
+console.log(leaveLine(line, leaver));
+
+
+2. Provide another real-world example that you can model using a data structure.
+You could use a matrix to model a table showing menu items at a restaurant.
+
+3. How would your data structure allow developers to access and manipulate the data?
+Developers could access this data structure with row/column indices and read/manipulate as desired.
