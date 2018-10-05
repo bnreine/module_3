@@ -206,59 +206,26 @@ console.log(findSquareRoot(numberList));
 any duplicate elements. The function should return true if any value appears at
  least twice in the array, and false if every element is distinct.
 
-Pseudocode (1st draft):
 
-FUNCTION isDuplicatePresent(numberList)
-  FOR each outerNumber in numberList starting at the second
-    FOR each innerNumber in numberList starting at 1 past outerNumber
-      IF outerNumber = innerNumber THEN
-        RETURN true
-      END IF
-    END FOR
-    SET outerNumber to 1 past outerNumber
-  END FOR
-  RETURN false
-END FUNCTION
+let numberList=[4,9,0,-9,3,5,1];
 
-Pseudocode (refactored):
-
-FUNCTION isDuplicate(numberList)
-  FOR each outerNumber in numberList starting at the second
-    CALL isInnerDuplicate(numberList, outerNumber) RETURNING isInnerDuplicate
-    If isInnerDuplicate THEN
-      RETURN true
-    END IF
-    SET outerNumber to outerNumber + 1
-  END FOR
-  RETURN false
-END FUNCTION
-
-
-
-
-
-FUNCTION isInnerDuplicate(numberList, outerNumber)
-  FOR each innerNumber in numberList starting at outerNumber + 1
-    IF outerNumber = innerNumber THEN
-      RETURN true
-    END IF
-  END FOR
-  RETURN false
-END FUNCTION
-
-
-let numberList = [1,5,2,1,3];
-let outerIndex = 0;
-
-let isInnerDuplicate = (numberList, outerIndex) => {
-
-
-  let newNumberList = numberList.filter( (innerNumber, innerIndex) => { innerIndex >= outerIndex +1 }).forEach( innerNumber => {
-    if numberList[outerIndex] === innerNumber {
+let isDuplicate = numberList => {
+  for (let outerIndex = 0; outerIndex < numberList.length-1; outerIndex ++) {
+    if (isInnerDuplicate(numberList,outerIndex)) {
       return true;
     }
+  }
   return false;
-  });
 }
 
-console.log(isInnerDuplicate(numberList, outerIndex));
+let isInnerDuplicate = (numberList, outerIndex) => {
+  for (let innerIndex = outerIndex +1; innerIndex < numberList.length; innerIndex ++) {
+    if (numberList[outerIndex] === numberList[innerIndex]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+
+console.log(isDuplicate(numberList))
