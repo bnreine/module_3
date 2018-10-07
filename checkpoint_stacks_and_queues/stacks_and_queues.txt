@@ -1,0 +1,149 @@
+1. What is the main difference between a stack and a queue?
+A stack is a last in first out linear data structure.
+A queue is a first in first out linear data structure.
+
+2. What are the similarities between stacks and queues?
+They are both linear data structures and they both have addition/removal methods.
+
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO
+options in a word processor such as Microsoft Word. Which data structure
+would you use for each option and why?
+
+Undo: I'd use a stack because you simply remove the last item in.  (LIFO)
+
+Redo: For a linear chain of undo's, each undo could go into another stack and if the user
+pressed redo, the stack would pop off the most recently added item that the user had previously
+undid. This is LIFO.
+
+
+
+Programming Questions
+You may program the following question in any language of your choice. Before you begin coding,
+write out a plan as to how you will solve the question.
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
+
+Plan:
+
+From my research, the best you can do in JavaScript is to use an array to mimic a stack using O(n) time complexity
+push() and pop() methods. Therefore, I'm going to add each letter of the input word
+into a stack (really an array) and then pop each entry off and append them one by one back into an initially empty string.
+
+Pseudocode:
+
+INIT word to "Bloc!"
+INIT reverseWord to empty
+INIT empty stack
+FOR each letter in word
+  ADD letter to stack
+END FOR
+WHILE stack NOT empty
+  REMOVE letter from stack
+  APPEND letter to reverseWord
+END WHILE
+RETURN reverseWord
+
+JavaScript Implementation:
+
+
+const word = "Bloc!";
+
+const reverseWord = word => {
+  let reversedWord = "";
+  let letterStack=[];
+  for (let letterIndex = 0; letterIndex < word.length; letterIndex ++) {
+    letterStack.push(word[letterIndex]);
+  }
+  while (letterStack.length !== 0) {
+    const letter = letterStack.pop();
+    reversedWord += letter;
+  }
+  return reversedWord;
+}
+
+console.log(reverseWord(word));
+
+
+
+
+
+2. Implement the pop method of a stack using one queue. Make a FIFO data structure
+ mirror the functionality of a LIFO data structure. Since the internal list is not
+ the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
+
+
+ First, I'm going to create a Queue class in which I initialize the data to an empty array.
+ I'll also define three methods: enqueue(), dequeue(), and measureSize() which do exactly that for each instantiation of Queue
+ Then I'll create another class called Stack which will extend the Queue class.  In it, I'll have a constructor
+ with a super call to delegate all the properties and methods of the parent(super) class Queue.  I'll additionally
+ create the pop() method.  The push() method will do the same as in the super class.  The pop() method
+ will remove the last item of the list using the enqueue and dequeue of the super class to get the correct functionality.
+
+
+JavaScript Implementation:
+
+var Queue = class {
+  constructor() {
+    this.data = [];
+    this.enqueue = this.enqueue.bind(this);
+    this.dequeue = this.dequeue.bind(this);
+    this.measureSize = this.measureSize.bind(this);
+  }
+
+  enqueue(newElement) {
+    this.data.push(newElement);
+  }
+
+  dequeue() {
+    const removedElement = this.data.shift();
+    return removedElement;
+  }
+
+  measureSize() {
+    return this.data.length;
+  }
+
+}
+
+var Stack = class extends Queue {
+  constructor(props) {
+    super(props);
+    this.pop = this.pop.bind(this);
+    this.push = this.push.bind(this);
+  }
+
+  push(newElement) {
+    this.enqueue(newElement);
+  }
+
+  pop() {
+    const size = this.measureSize();
+    for (let counter = 0; counter < size; counter ++) {
+      const removedElement = this.dequeue();
+      if (counter < size - 1) {
+        this.enqueue(removedElement);
+      } else {
+        return removedElement;
+      }
+    }
+  }
+
+}
+
+
+var stackTest = new Stack;
+stackTest.enqueue(1);
+stackTest.enqueue(4);
+stackTest.pop();
+
+
+
+
+
+
+
+
+To delete an item, take all of the elements in the queue one at a time and put
+them at the end of the queue, except for the last one which should be removed and returned.
+
+1. Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
