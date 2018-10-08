@@ -1,0 +1,19 @@
+
+####Memory Questions:
+Answer these questions using Markdown in the assignment submission text field.
+
+1. Where, and in what order, does the processor look for a piece of data?
+
+A: 1st: Register, 2nd: Cache, 3rd: Memory(RAM), 4th: Persistance Storage
+
+
+2. Assuming a total size of 4 Gigabytes and 16-bit memory locations, what number of locations does the RAM provide?
+
+4 billion * 8 bits/(16 bits/location) = 2 billion locations
+
+3. What’s the difference between volatile and persistent memory and which types exist in our memory pyramid?
+
+Volatile memory exists only when the computer has power.  There are three main types: Registers, Cache,
+and Memeory (Random Access Memory or "RAM"). Register memory is the fastest, then Cache, then RAM.
+Persistent memory exists even when powered down. This is hard drive memory.  It is the slowest to access and
+manipulate.
