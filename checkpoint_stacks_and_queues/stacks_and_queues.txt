@@ -147,3 +147,46 @@ To delete an item, take all of the elements in the queue one at a time and put
 them at the end of the queue, except for the last one which should be removed and returned.
 
 1. Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+
+This is the same as above, except I decided to implement the functions using lower level programming without pop
+and push.
+
+
+JavaScript Implementation:
+
+var Queue = class {
+  constructor() {
+    this.data = [];
+    this.enqueue = this.enqueue.bind(this);
+    this.dequeue = this.dequeue.bind(this);
+    this.measureSize = this.measureSize.bind(this);
+  }
+
+  enqueue(newElement){
+    const size = this.measureSize();
+    this.data[size] = newElement;
+  }
+
+  dequeue(){
+    const size = this.data.length;
+    const dequeuedElement = this.data[0];
+    for (let elementIndex = 0; elementIndex < size - 1; elementIndex ++) {
+      this.data[elementIndex] = this.data[elementIndex + 1];
+    }
+    this.data.length = size - 1;
+    return dequeuedElement;
+  }
+
+  measureSize() {
+    const size = this.data.length;
+    return size;
+  }
+
+}
+
+var queueTest = new Queue;
+queueTest.enqueue(1);
+queueTest.enqueue(2);
+queueTest.enqueue(4);
+queueTest.dequeue();
+queueTest.enqueue(5);
