@@ -46,11 +46,69 @@ false (doesn't exist)
 
 
 
+function Node(value) {
+  this.value = value;
+  this.right = null;
+  this.left = null;
+}
+
+function BinarySearchTree() {
+  this.root = null;
+}
+
+var tree = new BinarySearchTree();
+
+var node8 = new Node(8);
+tree.root = node8;
+
+var node3 = new Node(3);
+tree.root.left = node3;
+
+var node10 = new Node(10);
+tree.root.right = node10;
+
+var node1 = new Node(1);
+tree.root.left.left = node1;
+
+var node6 = new Node(6);
+tree.root.left.right = node6;
+
+var node14 = new Node(14);
+tree.root.right.right = node14;
+
+var node4 = new Node(4);
+tree.root.left.right.left = node4;
+
+var node7 = new Node(7);
+tree.root.left.right.right = node7;
+
+var node13 = new Node(13);
+tree.root.right.right.left = node13;
+
+
+BinarySearchTree.prototype.isPresent = function(value){
+  var currentNode = this.root;
+  if (currentNode === null){
+    return false;
+  }
+  while(currentNode){
+    if (value === currentNode.value){
+      return true;
+    } else if (value > currentNode.value){
+      currentNode = currentNode.right;
+    } else{
+      currentNode = currentNode.left;
+    }
+  }
+  return false;
+}
 
 
 
 
-SAVE FOR ANOTHER TIME
+
+
+SAVE FOR ANOTHER TIME (Grader please skip this)
 ******************************************************************
 function Node(value) {
   this.value = value;
@@ -92,8 +150,6 @@ BinarySearchTree.prototype.addNode = function(value){
 var tree = new BinarySearchTree();
 tree.addNode(8);
 tree.addNode(5);
-
-
 *************************************************************
 
 
