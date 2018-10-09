@@ -1,0 +1,157 @@
+1. What is a hash table?
+  An array of 2 element arrays, each containing a key and then a value associated with it.
+
+2. What is hashing?
+  The process of generating a hash code from a unique key using a hashing function.
+
+3. How does a hash table store data?
+  See number 1.  Also, each key associats to a particular index in the array based on the
+  hash code and the subsequent mod operation
+
+4. How are hash tables and objects different?
+  Hashes store key/value pairs in a particular order because
+  you implement them as an array.  You can therefore iterate
+  through hashes easily.  You need to iterate through objects manually.
+
+
+5. Determine whether you would use a hash table or an object to store each of the following pieces of data:
+-A list of pets and their unique names. ---> hash table
+-The name, age, and the birthday of your best friend. ---> object
+-The name and location of every company in a given city. ---> hash table
+-All of the books checked out from a library by a particular individual. ---> hash table
+-The primary and secondary phone numbers for a contact. --->object
+
+
+6. Build a system that allows a sales associate to enter a customer's name, address,
+and phone number into the system and look up customers using their phone numbers.
+Store this information in a hash table.
+
+Pseudocode:
+
+FUNCTION Customer(phone, name, address)
+  INIT this.key to phone
+  INIT this.value to {"name": name, "address": address}
+END FUNCTION
+
+
+JavaScript Implementation:
+
+function Customer(phone, name, address){
+  this.key = phone;
+  this.value = {name: name, address: address};
+}
+
+var customerMap = new Map();
+
+function addCustomer(phone, name, address){
+  const customer = new Customer(phone, name, address);
+  customerMap.set(customer.key, customer.value);
+}
+
+function retrieveCustomer(phone){
+  const customerValue = customerMap.get(phone);
+  return [phone, customerValue];
+}
+
+addCustomer(555, "Bill", "123 Lane");
+addCustomer(545, "Stacy", "125 Lane");
+addCustomer(535, "Carmine", "128 Lane");
+addCustomer(515, "Troy", "130 Lane");
+customerMap;
+const retrievedCustomer = retrieveCustomer(535);
+
+
+
+
+7.Build a system that allows a store owner to track their store's inventory using a
+hash table for storage.
+
+
+function Product(id, name, price){
+  this.key = id;
+  this.value = {name: name, price: price};
+}
+
+function Inventory(){
+  this.map = new Map();
+}
+
+Inventory.prototype.addProduct = function(id, name, price){
+  const product = new Product(id, name, price);
+  var map = this.map;
+  map.set(product.key, product.value);
+  return map;
+}
+
+Inventory.prototype.retrieveProduct = function(id){
+  return [id, this.map.get(id)];
+}
+
+var inventory = new Inventory()
+inventory.addProduct("r4", "GI Joe", 9.99)
+inventory.addProduct("h1", "Barbie", 7.99)
+inventory.addProduct("p3", "GI Joe", 9.99)
+inventory.addProduct("vb9", "Santa", 8.99)
+const retrievedProduct = inventory.retrieveProduct("r4");
+
+
+
+
+
+8. Build a system that allows digital copies of newspapers to be entered and searched
+by publisher and publication date. Use hash tables to store the necessary data.
+
+
+function Issue(id, info, publisher, date){
+  this.key = id;
+  this.value = {info: info, publisher: publisher, date: date};
+}
+
+function IssueList(){
+  this.database = new Map();
+}
+
+IssueList.prototype.addIssue = function(id, info, publisher, date){
+  const issue = new Issue(id, info, publisher, date);
+  var database = this.database;
+  database.set(issue.key, issue.value);
+  return database;
+}
+
+IssueList.prototype.idFind = function(id){
+  return [id, this.database.get(id)];
+}
+
+IssueList.prototype.dateFind = function(date){
+  var dateIssues = [];
+  var database = this.database;
+  database.forEach( (value, key) => {
+    if (value.date === date){
+      dateIssues[dateIssues.length] = [key, value];
+    }
+  });
+  return dateIssues;
+}
+
+
+IssueList.prototype.publisherFind = function(publisher){
+  var publisherIssues = [];
+  var database = this.database;
+  database.forEach( (value, key) => {
+    if (value.publisher === publisher){
+      publisherIssues[publisherIssues.length] = [key, value];
+    }
+  });
+  return publisherIssues;
+}
+
+
+
+var issueList = new IssueList();
+issueList.addIssue("rh", "Hello my name is Sam", "NY Times", "September 10, 2018");
+issueList.addIssue("yu4", "There there, my dear", "Forbes", "August 3, 2018");
+issueList.addIssue("roir", "Why I outta", "Wall Street Journal", "September 10, 2018");
+issueList.addIssue("poi7", "Galloping Galoshes", "NY Times", "February 19, 2018");
+const idFoundList = issueList.idFind("yu4");
+const dateFoundList = issueList.dateFind("September 10, 2018");
+const publisherFoundList = issueList.publisherFind("NY Times");
