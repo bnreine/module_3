@@ -112,32 +112,120 @@ Output: a -> c -> d
 
 First, traverse list starting from head. Store all entries in an array.  If value already exists, remove node.
 
-Pseudocode:
-
-FUNCTION removeDuplicates(list)
-  INIT uniqueList to empty array
-  INIT current to head
-  WHILE current.next
-    INIT next to current.next
-    IF isPresent(next.value, uniqueList)
-      CALL removeNextNode(current)
-    END IF
-    current = current.next
-  END WHILE
-END FUNCTION
 
 
-FUNCTION isPresent(value, list)
-  FOR each element in list
-    IF element = value THEN
-      RETURN true
-    END IF
-    RETURN false
-  END FOR
-END FUNCTION
+JavaScript Implementation:
 
-FUNCTION removeNextNode(currentNode)
-  INIT removalNode to currentNode.next
-  SET currentNode.next to currentNode.next.next
-  DELETE removalNode
-END FUNCTION
+
+function Node(element) {
+  this.value = element;
+  this.next = null;
+}
+
+function LinkedList(){
+  this.head = null;
+  this.size = 0;
+}
+
+
+LinkedList.prototype.push = function(element) {
+  const node = new Node (element);
+  var current;
+  if (!this.head) {
+    this.head = node;
+    this.size++;
+  } else {
+    current = this.head;
+    while(current.next) {
+      current = current.next;
+    }
+    current.next = node;
+    this.size++;
+  }
+}
+
+LinkedList.prototype.printList = function(){
+  let currentNode = this.head;
+  let list = [];
+  let listSize = 0;
+  while(currentNode){
+    list[listSize] = currentNode.value;
+    listSize++;
+    currentNode = currentNode.next;
+  }
+  console.log(list);
+}
+
+
+
+LinkedList.prototype.removeDuplicates = function() {
+  let uniqueList = [];
+  let currentNode = this.head;
+  let previousNode = null;
+  let tempCurrentNode;
+  while(currentNode){
+    if (currentNode === this.head){
+      uniqueList[0] = currentNode.value;
+      currentNode = currentNode.next;
+      previousNode = this.head;
+
+    } else if (this.isPresent(currentNode.value, uniqueList)) {
+      tempCurrentNode = currentNode.next;
+      this.removeNode(currentNode, previousNode);
+      currentNode = tempCurrentNode;
+
+    } else if (currentNode.next) {
+      uniqueListSize = uniqueList.length;
+      uniqueList[uniqueListSize] = currentNode.value;
+      currentNode = currentNode.next;
+      previousNode = previousNode.next;
+
+    } else {
+      uniqueListSize = uniqueList.length;
+      uniqueList[uniqueListSize] = currentNode.value;
+      currentNode=null;
+    }
+  }
+}
+
+
+LinkedList.prototype.removeNode = function(currentNode, previousNode){
+  previousNode.next = currentNode.next;
+  delete currentNode.value;
+  delete currentNode.next;
+  this.size--;
+}
+
+
+LinkedList.prototype.isPresent = function(value, list) {
+  for (let elementIndex = 0; elementIndex < list.length; elementIndex ++) {
+    const element = list[elementIndex];
+    if (element === value) {
+      return true;
+    }
+  }
+  return false;
+}
+
+
+var list = new LinkedList;
+list.push(1);
+list.push(2);
+list.push(3);
+list.push(2);
+list.push(2);
+list.push(4);
+list.push(5);
+list.push(1);
+list.push(1);
+list.printList();
+list.removeDuplicates();
+list.printList();
+
+
+
+
+3. Given an unsorted singly linked list, reverse it.
+Example
+Input: a -> b -> c -> d
+Output: d -> c -> b -> a
