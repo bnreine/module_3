@@ -1,19 +1,18 @@
 
-####Memory Questions:
+#### Memory Questions:
 Answer these questions using Markdown in the assignment submission text field.
 
-1. Where, and in what order, does the processor look for a piece of data?
+* Where, and in what order, does the processor look for a piece of data?
 
 A: 1st: Register, 2nd: Cache, 3rd: Memory(RAM), 4th: Persistance Storage
 
+* Assuming a total size of 4 Gigabytes and 16-bit memory locations, what number of locations does the RAM provide?
 
-2. Assuming a total size of 4 Gigabytes and 16-bit memory locations, what number of locations does the RAM provide?
+A. 4 billion * 8 bits/(16 bits/location) = 2 billion locations
 
-4 billion * 8 bits/(16 bits/location) = 2 billion locations
+* What’s the difference between volatile and persistent memory and which types exist in our memory pyramid?
 
-3. What’s the difference between volatile and persistent memory and which types exist in our memory pyramid?
-
-Volatile memory exists only when the computer has power.  There are three main types: Registers, Cache,
+A. Volatile memory exists only when the computer has power.  There are three main types: Registers, Cache,
 and Memeory (Random Access Memory or "RAM"). Register memory is the fastest, then Cache, then RAM.
 Persistent memory exists even when powered down. This is hard drive memory.  It is the slowest to access and
 manipulate.
@@ -229,3 +228,167 @@ list.printList();
 Example
 Input: a -> b -> c -> d
 Output: d -> c -> b -> a
+
+I'm going to pop each items off the linked list one by one into a queue.  Then take them off
+one by one from the front of the queue and push them back onto the linked list.  After working through
+some of this, I realized all I needed to do was load up one linked list and unload it in to another one.
+Only needed push and pop functions.
+
+First Draft of Pseudocode (changed later on):
+
+FUNCTION Node (value)
+  INIT this.value to value
+  INIT this.next to null
+END FUNCTION
+
+FUNCTION LinkedList()
+  INIT this.head to null
+  INIT this.size to 0
+END FUNCTION
+
+FUNCTION Queue()
+  MERGE all properties from LinkedList
+END FUNCTION
+
+FUNCTION push(value)
+  INIT node
+  INIT currentNode to head
+  WHILE (currentNode)
+    SET currentNode to currentNode.next
+  END WHILE
+  currentNode = node
+  RETURN nothing
+END FUNCTION
+
+FUNCTION pop()
+  INIT currentNode to head
+  WHILE (currentNode.next)
+    SET currentNode to currentNode.next
+  END WHILE
+  INIT poppedNode to currentNode
+  SET currentNode to null
+  RETURN poppedNode
+END FUNCTION
+
+FUNCTION dequeue()
+  INIT dequeuedNode to head
+  SET head to head.next
+  RETURN dequeuedNode
+END FUNCTION
+
+ADD push to LinkedList
+ADD pop to LinkedList
+ADD dequeue to Queue
+
+
+
+
+
+
+JavaScript IMmplementation:
+
+function Node(value){
+  this.value = value;
+  this.next = null;
+}
+
+function LinkedList(){
+  this.head = null;
+  this.size = 0;
+}
+
+LinkedList.prototype.push = function(element) {
+  const node = new Node (element);
+  var current;
+  if (!this.head) {
+    this.head = node;
+    this.size++;
+  } else {
+    current = this.head;
+    while(current.next) {
+      current = current.next;
+    }
+    current.next = node;
+    this.size++;
+  }
+}
+
+
+LinkedList.prototype.pop = function(){
+  if (!this.head.next){
+    const poppedNode = this.head;
+    this.head = this.head.next;
+    this.size--;
+    return poppedNode;
+  } else {
+    let previousNode = this.head;
+    let currentNode = this.head.next
+    while(currentNode.next){
+      currentNode = currentNode.next;
+      previousNode = previousNode.next;
+    }
+    const poppedNode = currentNode;
+    previousNode.next = currentNode.next;
+    this.size--;
+    return poppedNode;
+  }
+}
+
+function reverseList(list){
+  var reversedList = new LinkedList;
+  while(list.head){
+    const item = list.pop().value;
+    reversedList.push(item);
+  }
+  return reversedList;
+}
+
+var list = new LinkedList;
+list.push(1);
+list.push(2);
+list.push(3);
+list.push(4);
+var reversedList = reverseList(list);
+reversedList.head
+reversedList.head.next
+reversedList.head.next.next
+reversedList.head.next.next.next
+
+
+
+
+
+/*
+************************************************************
+SAVE FOR LATER. NOT PART OF ASSIGNMENT
+
+function Queue(){
+  this.head = null;
+  this.size = 0;
+}
+
+Queue.prototype.enqueue = function(element) {
+  const node = new Node (element);
+  var current;
+  if (!this.head) {
+    this.head = node;
+    this.size++;
+  } else {
+    current = this.head;
+    while(current.next) {
+      current = current.next;
+    }
+    current.next = node;
+    this.size++;
+  }
+}
+
+Queue.prototype.dequeue = function(){
+  const dequeuedNode = this.head;
+  this.head = this.head.next;
+  this.size--;
+  return dequeuedNode;
+}
+
+******************************************************
+*/
