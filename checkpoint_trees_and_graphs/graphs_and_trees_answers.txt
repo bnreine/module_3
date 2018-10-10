@@ -170,7 +170,7 @@ is the distance.  Or, if the node
 is a fork node, then downward search on either side, counting up each until you reach each destinateion number.  Add both counters to get
 total distance
 
-Pseudocode:
+Pseudocode 1st draft:
 
 FUNCTION calculateDistance(valueOne, valueTwo)
 
@@ -263,16 +263,14 @@ BinarySearchTree.prototype.calculateDistance = function(valueOne, valueTwo){
       currentNode = currentNode.right;
     }
   }
-  //correct currentNode every time
-  //return currentNode;
 
   if (currentNode.value === valueOne){
-    const countOne = this.countSteps(valueOne, currentNode);
-    return countOne;
-
-  } else if (currentNode.value === valueTwo){
     const countTwo = this.countSteps(valueTwo, currentNode);
     return countTwo;
+
+  } else if (currentNode.value === valueTwo){
+    const countOne = this.countSteps(valueOne, currentNode);
+    return countOne;
 
   } else if (((valueOne < currentNode.value) && (valueTwo > currentNode.value)) || ((valueTwo < currentNode.value) && (valueOne > currentNode.value))){
     const countOne = this.countSteps(valueOne, currentNode);
@@ -286,7 +284,7 @@ BinarySearchTree.prototype.calculateDistance = function(valueOne, valueTwo){
 
 BinarySearchTree.prototype.countSteps = function(value, startNode){
   var currentNode = startNode;
-  var steps = 0;
+  var steps = -1;
 
   if (currentNode === null){
     return false;
@@ -307,4 +305,4 @@ BinarySearchTree.prototype.countSteps = function(value, startNode){
   return false;
 }
 
-tree.calculateDistance(7,4);  (number of steps not correct, not always correct)
+tree.calculateDistance(13,8);
