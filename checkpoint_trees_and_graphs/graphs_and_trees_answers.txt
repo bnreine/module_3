@@ -163,3 +163,148 @@ between the two nodes.
 
 Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1.
 The distance between the nodes 1 and 14 is 4.
+
+Do a downward search until either you find one of the numbers or you find a fork node (each subtree contains one of the two numbers).
+If one of the numbers is the node, then downward search until you reach the other number while counting how many steps.  Counter
+is the distance.  Or, if the node
+is a fork node, then downward search on either side, counting up each until you reach each destinateion number.  Add both counters to get
+total distance
+
+Pseudocode:
+
+FUNCTION calculateDistance(valueOne, valueTwo)
+
+
+  INIT currentNode to rootNode
+  INIT matchOne to (currentNode.value = valueOne)
+  INIT matchTwo to (currentNode.value = valueTwo)
+  INIT oneIsLess to (valueOne < currentNode.value)
+  INIT twoIsLess to (valueTwo < currentNode.value)
+  INIT oneIsGreater to (valueOne > currentNode.value)
+  INIT twoIsGreater to (valueTwo > currentNode.value)
+  INIT fork to ((oneIsLess AND twoIsGreater) OR (twoIsLess AND oneIsGreater))
+  WHILE ((NOT matchOne) AND (NOT matchTwo) AND (NOT fork))
+    IF oneIsLess THEN
+      SET currentNode to currentNode.left
+    ELSE
+      SET currentNode to currentNode.right
+    END IF
+  END WHILE
+
+
+  IF matchOne THEN
+    CALL findValue(valueOne, currentNode) RETURNING countOne
+    RETURN countOne
+  ELSE IF matchTwo THEN
+    CALL findValue(valueTwo, currentNode) RETURNING countTwo
+    RETURN countTwo
+  ELSE IF fork THEN
+    CALL findValue(valueOne, currentNode) RETURNING countOne
+    CALL findValue(valueTwo, currentNode) RETURNING countTwo
+    RETURN (countOne + countTwo)
+  END IF
+
+
+END FUNCTION
+
+
+
+
+
+
+JavaScript Implementation:
+
+function Node(value) {
+  this.value = value;
+  this.right = null;
+  this.left = null;
+}
+
+function BinarySearchTree() {
+  this.root = null;
+}
+
+var tree = new BinarySearchTree();
+
+var node8 = new Node(8);
+tree.root = node8;
+
+var node3 = new Node(3);
+tree.root.left = node3;
+
+var node10 = new Node(10);
+tree.root.right = node10;
+
+var node1 = new Node(1);
+tree.root.left.left = node1;
+
+var node6 = new Node(6);
+tree.root.left.right = node6;
+
+var node14 = new Node(14);
+tree.root.right.right = node14;
+
+var node4 = new Node(4);
+tree.root.left.right.left = node4;
+
+var node7 = new Node(7);
+tree.root.left.right.right = node7;
+
+var node13 = new Node(13);
+tree.root.right.right.left = node13;
+
+
+BinarySearchTree.prototype.calculateDistance = function(valueOne, valueTwo){
+  var currentNode = this.root;
+  while((currentNode.value !== valueOne) && (currentNode.value !== valueTwo) && (!(((valueOne < currentNode.value) && (valueTwo > currentNode.value)) || ((valueTwo < currentNode.value) && (valueOne > currentNode.value))))){
+    if ((valueOne < currentNode.value)) {
+      currentNode = currentNode.left;  //currentNode = null for some reason
+    } else {
+      currentNode = currentNode.right;
+    }
+  }
+  //correct currentNode every time
+  //return currentNode;
+
+  if (currentNode.value === valueOne){
+    const countOne = this.countSteps(valueOne, currentNode);
+    return countOne;
+
+  } else if (currentNode.value === valueTwo){
+    const countTwo = this.countSteps(valueTwo, currentNode);
+    return countTwo;
+
+  } else if (((valueOne < currentNode.value) && (valueTwo > currentNode.value)) || ((valueTwo < currentNode.value) && (valueOne > currentNode.value))){
+    const countOne = this.countSteps(valueOne, currentNode);
+    const countTwo = this.countSteps(valueTwo, currentNode);
+    return (countOne + countTwo);
+
+  }
+
+}
+
+
+BinarySearchTree.prototype.countSteps = function(value, startNode){
+  var currentNode = startNode;
+  var steps = 0;
+
+  if (currentNode === null){
+    return false;
+  }
+
+  while(currentNode){
+    if (value === currentNode.value){
+      steps++;
+      return steps;
+    } else if (value > currentNode.value){
+      steps++;
+      currentNode = currentNode.right;
+    } else{
+      steps++;
+      currentNode = currentNode.left;
+    }
+  }
+  return false;
+}
+
+tree.calculateDistance(7,4);  (number of steps not correct, not always correct)
