@@ -1,0 +1,65 @@
+1. Using proper pseudo-code, describe the following primitive algorithms:
+
+-Making coffee;
+
+PUT coffee filter in coffee maker
+OPEN coffee can
+SCOOP coffee into coffee filter
+FILL coffee pot with water to desired level
+POUR water into coffee maker
+START coffee maker
+
+
+-Washing dishes;
+
+TURN hot water on
+SOAK dishes with gunk on them
+PUT dish soap in large container
+FILL large container with hot water
+TURN water off
+WHILE there are still dirty dishes
+  WASH each dish
+END WHILE
+TURN hot water on
+WHILE there are still soapy dishes
+  RINSE each dish
+  PLACE each dish in drying area
+END WHILE
+TURN hot water off
+
+
+-A choice of your own.
+
+Driving to the gym:
+
+WALK to car
+UNLOCK car
+OPEN door
+GET in car
+PUT key in ignition
+START ignition
+DRIVE To gym
+PARK car
+TAKE keys out of ignition
+GET out of car
+CLOSE door
+LOCK car
+
+
+2. As with the knot algorithm, there may be more than one way to solve the problem.
+It is essential to try to pick the best algorithm for a situation. Name three companies
+who created an algorithm that made them successful, e.g., Google's search algorithm.
+It doesn't need to be a tech example (such as a recipe or manufacturing a product).
+Google's algorithm produces more relevant results than other search engines; what about
+each of your cases make them stand out?
+
+-Wim Hof Breathing: Roughly doubles your breath holding time within 30 minutes.
+-Fluent Forever (blog and book by Gabriel Wyner): Language retention forever.
+-DiSSS (Meta learning acronym by Tim Ferriss): Meta learning method to learn any skill lightning fast.
+
+
+
+3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+An efficient algorithm gets the the solution using minimal resources (time, space)
+An inefficient algorithm is the opposite.
