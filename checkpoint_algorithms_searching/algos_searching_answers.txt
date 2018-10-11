@@ -90,3 +90,17 @@ dict.findWord(0, Math.trunc((0 + dict.length -1)/2), dict.length - 1, "susan");
 
 2. You work at a pet store, and a child has asked you to net the only white-spotted
 goldfish from the fish tank. Write a program that will help you net the right fish.
+
+var fishList = ["blue-fin","grey-whale","white-spotted","pink"];
+const fishName = "white-spotted";
+
+
+function findFish(fishName, fishList){
+  for (let fishIndex = 0; fishIndex < fishList.length; fishIndex++){
+    if (fishList[fishIndex] === fishName){
+      return fishIndex;
+    }
+  }
+}
+
+findFish(fishName, fishList);
