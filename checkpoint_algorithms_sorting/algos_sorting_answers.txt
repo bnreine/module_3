@@ -1,0 +1,81 @@
+1. Write pseudocode for bubble sort.
+
+FUNCTION sortList(list)
+  INIT swapped to true
+  WHILE swapped = true
+    SET swapped to false
+    FOR each index in list until last index - 1 of list
+      IF list at index > list at index + 1 THEN
+        INIT temp to list at index
+        SET list at index to list at index + 1
+        SET list at index + 1 to temp
+        SET swapped to true
+      END IF
+    END FOR
+  END WHILE
+  RETURN list
+END FUNCTION
+
+
+2. Write pseudocode for quicksort.
+
+
+FUNCTION sortList(list)
+  IF length of list = 0 or 1 THEN
+    RETURN list
+  ELSE
+    INIT pivot to last item in list
+    INIT pivotIndex to last index in list
+    INIT sortIndex to first index in list
+    INIT tempSort
+    INIT pivot to list at last index
+    INIT rightList
+    INIT leftList
+    WHILE pivotIndex NOT = sortIndex
+      IF list at sortIndex > list at pivotIndex THEN
+        SET tempSort to list at sortIndex
+        SET list at sortIndex to list at pivotIndex - 1
+        SET list at pivotIndex to tempSort
+        SET list at pivotIndex - 1 to pivot
+        SET pivotIndex to pivotIndex - 1
+      ELSE
+        SET sortIndex to sortIndex + 1
+      END IF
+    END WHILE
+    SET leftList to list from 0 index through pivotIndex - 1
+    SET rightList to list from pivotIndex + 1 through last index of list
+    CALL sortList with leftList RETURNING leftList
+    CALL sortList with rightList RETURNING rightList
+    RETURN (COMBINE leftList, pivot, and rightList in order)
+  END IF
+END FUNCTION
+
+
+
+3. We talked about time complexity in a previous checkpoint, and how to get an idea of
+the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods,
+identify why merge sort and quick sort are much more efficient than the others. Walking through
+each algorithm with a few sample collections may help.
+
+Merge sort and quicksort are more efficient because there are only log(n) number of levels in the recursive tree structure with
+O(n) operations at each level.  Multiplying, this works out to O(n*log(n)) time.  The other algorithms
+are O(n^2) overall because they iterate with double nesting.
+
+
+
+
+4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket
+sort and explain how it works. What is the ideal input for bucket sort?
+
+How it works:
+
+
+Start with an array of n unsorted numbers with a range m.
+Create p buckets each of which has a range of m/p
+Iterate through array and add each element to its appropriate bucket
+Iterate through all p buckets and call the sort method again for each one, this time with a smaller range m/p.
+Base case is when you have zero or one distinct number in each bucket.
+Then concatenate everything together on the recursive return path.
+
+If the array of numbers is uniformly distributed across the range of numbers, bucket sort is O(n).  Therefore, this input
+formatting is ideal.
