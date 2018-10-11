@@ -44,6 +44,44 @@ Programming Questions:
 in the dictionary the fastest. Write a program to allow you to win the bet.
 
 
+function Dictionary(){
+  this.data = [];
+  this.length = this.data.length;
+}
+
+Dictionary.prototype.addWord = function(word){
+  this.data.push(word);
+  this.length++;
+}
+
+Dictionary.prototype.findWord = function(lowIndex, middleIndex, highIndex, word){
+  var dictionary = this.data;
+  if (dictionary[lowIndex] === word){
+    return lowIndex;
+  } else if (dictionary[middleIndex] === word){
+    return middleIndex;
+  } else if (dictionary[highIndex] === word){
+    return highIndex;
+  } else if (word > dictionary[middleIndex]){
+    lowIndex = middleIndex + 1;
+    middleIndex = Math.trunc((lowIndex + highIndex)/2);
+    return this.findWord(lowIndex, middleIndex, highIndex, word);
+  } else if (word < dictionary[middleIndex]){
+    highIndex = middleIndex - 1;
+    middleIndex = Math.trunc((lowIndex + highIndex)/2);
+    return this.findWord(lowIndex, middleIndex, highIndex, word);
+  }
+}
+
+
+var dict = new Dictionary;
+dict.addWord("ashley")
+dict.addWord("mary")
+dict.addWord("susan")
+dict.addWord("victor")
+dict.findWord(0, Math.trunc((0 + dict.length -1)/2), dict.length - 1, "susan");
+
+
 
 
 
