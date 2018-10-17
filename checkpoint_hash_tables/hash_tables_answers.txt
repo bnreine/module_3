@@ -26,6 +26,122 @@
 and phone number into the system and look up customers using their phone numbers.
 Store this information in a hash table.
 
+
+class Customer{
+  constructor(name, address, phone){
+    this.key = phone;
+    this.value = {name: name, address: address};
+  }
+}
+
+class CustomerList{
+  constructor(size){
+    this.value = new Array(size);
+    this.size = size;
+    this.addCustomer = this.addCustomer.bind(this);
+    this.findHashCode = this.findHashCode.bind(this);
+    this.findIndexAdd = this.findIndexAdd.bind(this);
+    this.linearProbeAdd = this.linearProbeAdd.bind(this);
+    this.findCustomer = this.findCustomer.bind(this);
+    this.findIndexSearch = this.findIndexSearch.bind(this);
+    this.linearProbeSearch = this.linearProbeSearch.bind(this);
+  }
+
+
+  addCustomer(name, address, phone){
+    var list = this.value;
+    const customer = new Customer(name, address, phone);
+    const customerKey = customer.key;
+    const hashCode = this.findHashCode(customerKey);
+    const index = this.findIndexAdd(hashCode);
+    list[index] = customer;
+  }
+
+  findCustomer(phone){
+    const hashCode = this.findHashCode(phone);
+    const index = this.findIndexSearch(hashCode, phone);
+    return index;
+  }
+
+  findHashCode(key){
+    const hashCode = key;
+    return hashCode;
+  }
+
+
+  findIndexAdd(hashCode){
+    const size = this.size;
+    var list = this.value;
+    var index = hashCode % size;
+    if (!list[index]){
+      return index;
+    } else {
+      index++;
+      return this.linearProbeAdd(index);
+      }
+    }
+
+  linearProbeAdd(index){
+    var list = this.value;
+    const size = this.size;
+    while(list[index]){
+      index++;
+    }
+    if (index < size) {
+      return index;
+    }
+    index = 0;
+    while(list[index]){
+      index++;
+    }
+    return index;
+  }
+
+
+  findIndexSearch(hashCode, key){
+    const size = this.size;
+    var list = this.value;
+    var index = hashCode % size;
+    if (list[index].key === key){
+      return index;
+    } else {
+      index++;
+      return this.linearProbeSearch(index, key);
+      }
+    }
+
+  linearProbeSearch(index, key){
+    var list = this.value;
+    const size = this.size;
+    while(list[index]){
+      if (list[index].key === key){
+        return index;
+      }
+      index++;
+    }
+    index = 0;
+    while(list[index]){
+      if (list[index].key === key){
+        return index;
+      }
+      index++;
+    }
+  }
+
+
+}
+
+
+var list = new CustomerList(11);
+list.addCustomer("Ben", "123 lane", 304);
+list.addCustomer("Brian", "124 lane", 784);
+list.findCustomer(784);
+
+
+
+
+The following uses Map() function in JS...Grader, please skip
+*******************************************************
 Pseudocode:
 
 FUNCTION Customer(phone, name, address)
@@ -59,6 +175,11 @@ addCustomer(535, "Carmine", "128 Lane");
 addCustomer(515, "Troy", "130 Lane");
 customerMap;
 const retrievedCustomer = retrieveCustomer(535);
+****************************************************************
+
+
+
+
 
 
 
@@ -67,6 +188,138 @@ const retrievedCustomer = retrieveCustomer(535);
 hash table for storage.
 
 
+
+
+
+class Product{
+  constructor(name, price, id){
+    this.key = id;
+    this.value = {name: name, price: price};
+  }
+}
+
+class Inventory{
+  constructor(size){
+    this.value = new Array(size);
+    this.size = size;
+
+
+    this.addProduct = this.addProduct.bind(this);
+    this.findHashCode = this.findHashCode.bind(this);
+    this.findIndexAdd = this.findIndexAdd.bind(this);
+    this.linearProbeAdd = this.linearProbeAdd.bind(this);
+    this.findProduct = this.findProduct.bind(this);
+    this.findIndexSearch = this.findIndexSearch.bind(this);
+    this.linearProbeSearch = this.linearProbeSearch.bind(this);
+  }
+
+
+  addProduct(name, price, id){
+    var list = this.value;
+    const product = new Product(name, price, id);
+    const productKey = product.key;
+    const hashCode = this.findHashCode(productKey);
+    const index = this.findIndexAdd(hashCode);
+    list[index] = product;
+  }
+
+  findProduct(id){
+    const hashCode = this.findHashCode(id);
+    const index = this.findIndexSearch(hashCode, id);
+    return index;
+  }
+
+  findHashCode(key){
+    const hashCode = key;
+    return hashCode;
+  }
+
+
+  findIndexAdd(hashCode){
+    const size = this.size;
+    var list = this.value;
+    var index = hashCode % size;
+    if (!list[index]){
+      return index;
+    } else {
+      index++;
+      return this.linearProbeAdd(index);
+      }
+    }
+
+  linearProbeAdd(index){
+    var list = this.value;
+    const size = this.size;
+    while(list[index]){
+      index++;
+    }
+    if (index < size) {
+      return index;
+    }
+    index = 0;
+    while(list[index]){
+      index++;
+    }
+    return index;
+  }
+
+
+  findIndexSearch(hashCode, key){
+    const size = this.size;
+    var list = this.value;
+    var index = hashCode % size;
+    if (list[index].key === key){
+      return index;
+    } else {
+      index++;
+      return this.linearProbeSearch(index, key);
+      }
+    }
+
+  linearProbeSearch(index, key){
+    var list = this.value;
+    const size = this.size;
+    while(list[index]){
+      if (list[index].key === key){
+        return index;
+      }
+      index++;
+    }
+    index = 0;
+    while(list[index]){
+      if (list[index].key === key){
+        return index;
+      }
+      index++;
+    }
+  }
+
+
+}
+
+
+var list = new Inventory(11);
+list.addProduct("GI Joe", 7.99, 304);
+list.addProduct("Brian", 9.99, 974);
+list.findProduct(974);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Uses Map() function....grader, please skip this...
+********************************************************************
 function Product(id, name, price){
   this.key = id;
   this.value = {name: name, price: price};
@@ -93,6 +346,8 @@ inventory.addProduct("h1", "Barbie", 7.99)
 inventory.addProduct("p3", "GI Joe", 9.99)
 inventory.addProduct("vb9", "Santa", 8.99)
 const retrievedProduct = inventory.retrieveProduct("r4");
+*****************************************************************
+
 
 
 
@@ -102,6 +357,217 @@ const retrievedProduct = inventory.retrieveProduct("r4");
 by publisher and publication date. Use hash tables to store the necessary data.
 
 
+
+
+class Issue{
+  constructor(publisher, orderBy, article, publicationDate){
+    if (orderBy === "publisher"){
+      this.key = publisher;
+      this.value = {orderBy: orderBy, article: article, publicationDate: publicationDate};
+    } else if (orderBy === "publication date"){
+      this.key = publicationDate;
+      this.value = {orderBy: orderBy, article: article, publisher: publisher};
+    }
+  }
+}
+
+class IssueList{
+  constructor(size, orderBy){
+    this.value = new Array(size);
+    this.size = size;
+    this.orderBy = orderBy;
+
+    this.addIssue = this.addIssue.bind(this);
+    this.findHashCode = this.findHashCode.bind(this);
+    this.findIndexAdd = this.findIndexAdd.bind(this);
+    this.linearProbeAdd = this.linearProbeAdd.bind(this);
+    this.findIssue = this.findIssue.bind(this);
+    this.findIndexSearch = this.findIndexSearch.bind(this);
+    this.linearProbeSearch = this.linearProbeSearch.bind(this);
+  }
+
+
+  addIssue(publisher, article, publicationDate){
+    var list = this.value;
+    const orderBy = this.orderBy;
+    const issue = new Issue(publisher, orderBy, article, publicationDate);
+    const issueKey = issue.key;
+    const hashCode = this.findHashCode(issueKey);
+    console.log(hashCode);
+    const index = this.findIndexAdd(hashCode);
+    list[index] = issue;
+  }
+
+
+  findHashCode(key){
+    const orderBy = this.orderBy;
+    var hashCode = 0;
+    if (orderBy === "publisher"){
+      const publisher = key;
+      const maxLength = 30;
+      var publisherPrepared = publisher;
+      for (let index = publisherPrepared.length; index < maxLength; index++){
+        publisherPrepared+=" ";
+      }
+
+      for (let index = 0; index < publisherPrepared.length; index++){
+        hashCode += (index+1)*publisherPrepared.charCodeAt(index);
+      }
+
+    } else if (orderBy === "publication date"){
+      var publicationDate = key;
+      hashCode = parseInt(publicationDate);
+
+    }
+    return hashCode;
+  }
+
+
+  findIndexAdd(hashCode){
+    const size = this.size;
+    var list = this.value;
+    var index = hashCode % size;
+    if (!list[index]){
+      return index;
+    } else {
+      index++;
+      return this.linearProbeAdd(index);
+      }
+    }
+
+  linearProbeAdd(index){
+    var list = this.value;
+    const size = this.size;
+    while(list[index]){
+      index++;
+    }
+    if (index < size) {
+      return index;
+    }
+    index = 0;
+    while(list[index]){
+      index++;
+    }
+    return index;
+  }
+
+  findIssue(key){
+    const hashCode = this.findHashCode(key);
+    const index = this.findIndexSearch(hashCode, key);
+    return index;
+  }
+
+  findIndexSearch(hashCode, key){
+    const size = this.size;
+    var list = this.value;
+    var index = hashCode % size;
+    if (list[index].key === key){
+      return index;
+    } else {
+      index++;
+      return this.linearProbeSearch(index, key);
+      }
+    }
+
+  linearProbeSearch(index, key){
+    var list = this.value;
+    const size = this.size;
+    while(list[index]){
+      if (list[index].key === key){
+        return index;
+      }
+      index++;
+    }
+    index = 0;
+    while(list[index]){
+      if (list[index].key === key){
+        return index;
+      }
+      index++;
+    }
+  }
+
+
+}
+
+var issueList = new IssueList(11, "publication date");
+issueList.addIssue("The New York Times", "Hello there you", "20181017");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DO NOT GRADE below please...
+***************************************************************
+searchBy("publisher") OR searchBy("publication date")
+
+
+
+var publisher = "The New York Times";
+var maxLength = 30;
+var publisherPrepared = publisher;
+for (let index = publisherPrepared.length; index < maxLength; index++){
+  publisherPrepared+=" ";
+}
+
+var hashCode=0;
+for (let index = 0; index < publisherPrepared.length; index++){
+  hashCode += (index+1)*publisherPrepared.charCodeAt(index);
+}
+
+hashCode;
+//Gives 5 digits
+
+
+
+
+
+
+var publicationDate = "19850917";  //YYYYMMDD format
+var hashCode = parseInt(publicationDate);
+******************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Uses Map() function....grader, please skip this...
+********************************************************************
 function Issue(id, info, publisher, date){
   this.key = id;
   this.value = {info: info, publisher: publisher, date: date};
@@ -155,3 +621,4 @@ issueList.addIssue("poi7", "Galloping Galoshes", "NY Times", "February 19, 2018"
 const idFoundList = issueList.idFind("yu4");
 const dateFoundList = issueList.dateFind("September 10, 2018");
 const publisherFoundList = issueList.publisherFind("NY Times");
+****************************************************************************
