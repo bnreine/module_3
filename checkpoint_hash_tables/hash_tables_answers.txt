@@ -30,7 +30,7 @@ Store this information in a hash table.
 class Customer{
   constructor(name, address, phone){
     this.key = phone;
-    this.value = {name: name, address: address};
+    this.value = {phone: phone, name: name, address: address};
   }
 }
 
@@ -60,7 +60,11 @@ class CustomerList{
   findCustomer(phone){
     const hashCode = this.findHashCode(phone);
     const index = this.findIndexSearch(hashCode, phone);
-    return index;
+    if (index === null){
+      console.log("This customer does not exist in the database.");
+    } else{
+      return this.value[index].value;
+    }
   }
 
   findHashCode(key){
@@ -102,15 +106,18 @@ class CustomerList{
     const size = this.size;
     var list = this.value;
     var index = hashCode % size;
-    if (list[index].key === key){
+    if (!list[index]){
+      return null;
+    } else if (list[index].key === key){
       return index;
     } else {
+      const startIndex = index;
       index++;
-      return this.linearProbeSearch(index, key);
+      return this.linearProbeSearch(index, key, startIndex);
       }
     }
 
-  linearProbeSearch(index, key){
+  linearProbeSearch(index, key, startIndex){
     var list = this.value;
     const size = this.size;
     while(list[index]){
@@ -123,9 +130,12 @@ class CustomerList{
     while(list[index]){
       if (list[index].key === key){
         return index;
+      } else if (index === startIndex){
+        return null;
       }
       index++;
     }
+    return null;
   }
 
 
@@ -133,9 +143,16 @@ class CustomerList{
 
 
 var list = new CustomerList(11);
-list.addCustomer("Ben", "123 lane", 304);
-list.addCustomer("Brian", "124 lane", 784);
-list.findCustomer(784);
+list.addCustomer("Ben", "123 lane", 3048737777);
+list.addCustomer("Brian", "124 lane", 7849843333);
+list.findCustomer(9);
+
+
+
+
+
+
+
 
 
 
@@ -194,7 +211,7 @@ hash table for storage.
 class Product{
   constructor(name, price, id){
     this.key = id;
-    this.value = {name: name, price: price};
+    this.value = {id: id, name: name, price: price};
   }
 }
 
@@ -226,7 +243,13 @@ class Inventory{
   findProduct(id){
     const hashCode = this.findHashCode(id);
     const index = this.findIndexSearch(hashCode, id);
-    return index;
+    var list = this.value;
+    if (index === null){
+      console.log("No such product in inventory.");
+      return null;
+    } else {
+      return list[index].value;
+    }
   }
 
   findHashCode(key){
@@ -268,15 +291,18 @@ class Inventory{
     const size = this.size;
     var list = this.value;
     var index = hashCode % size;
-    if (list[index].key === key){
+    if (!list[index]){
+      return null;
+    } else if (list[index].key === key){
       return index;
     } else {
+      const startIndex = index;
       index++;
-      return this.linearProbeSearch(index, key);
+      return this.linearProbeSearch(index, key, startIndex);
       }
     }
 
-  linearProbeSearch(index, key){
+  linearProbeSearch(index, key, startIndex){
     var list = this.value;
     const size = this.size;
     while(list[index]){
@@ -289,9 +315,12 @@ class Inventory{
     while(list[index]){
       if (list[index].key === key){
         return index;
+      } else if (index === startIndex){
+        return null;
       }
       index++;
     }
+    return null;
   }
 
 
@@ -363,13 +392,14 @@ class Issue{
   constructor(publisher, orderBy, article, publicationDate){
     if (orderBy === "publisher"){
       this.key = publisher;
-      this.value = {orderBy: orderBy, article: article, publicationDate: publicationDate};
+      this.value = {orderBy: orderBy, article: article, publisher: publisher, publicationDate: publicationDate};
     } else if (orderBy === "publication date"){
       this.key = publicationDate;
-      this.value = {orderBy: orderBy, article: article, publisher: publisher};
+      this.value = {orderBy: orderBy, article: article, publisher: publisher, publicationDate: publicationDate};
     }
   }
 }
+
 
 class IssueList{
   constructor(size, orderBy){
@@ -454,22 +484,31 @@ class IssueList{
   findIssue(key){
     const hashCode = this.findHashCode(key);
     const index = this.findIndexSearch(hashCode, key);
-    return index;
+    var list = this.value;
+    if (index === null){
+      console.log("No such issue.");
+      return null;
+    } else{
+      return list[index].value;
+    }
   }
 
   findIndexSearch(hashCode, key){
     const size = this.size;
     var list = this.value;
     var index = hashCode % size;
-    if (list[index].key === key){
+    if (!list[index]){
+      return null;
+    } else if (list[index].key === key){
       return index;
     } else {
+      const startIndex = index;
       index++;
-      return this.linearProbeSearch(index, key);
+      return this.linearProbeSearch(index, key, startIndex);
       }
     }
 
-  linearProbeSearch(index, key){
+  linearProbeSearch(index, key, startIndex){
     var list = this.value;
     const size = this.size;
     while(list[index]){
@@ -482,16 +521,20 @@ class IssueList{
     while(list[index]){
       if (list[index].key === key){
         return index;
+      } else if (index === startIndex){
+        return null;
       }
       index++;
     }
+    return null;
   }
 
 
 }
 
-var issueList = new IssueList(11, "publication date");
+var issueList = new IssueList(11, "publisher");
 issueList.addIssue("The New York Times", "Hello there you", "20181017");
+issueList.findIssue("The New York Times");
 
 
 
