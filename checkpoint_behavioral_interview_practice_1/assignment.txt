@@ -1,0 +1,122 @@
+Question 1 ---> vid1 unlisted link: https://youtu.be/mBgcHQL-3FE
+Question 2---> vid2 unlisted link: https://youtu.be/BjxEzgRxqG4
+Questions 3----> vid3 unlisted link: https://youtu.be/Pczeaf2NQRA
+
+
+
+
+Initial Email:
+
+Hi!
+
+Thanks so much for your interest in our Front-End Developer position at Vend.ly. We reviewed
+your resume and think that you might be a good fit for our team. We’d like to schedule an
+initial phone screen with you. Can you let me know a few times when you are available next
+week and the best number to reach you at?
+
+I look forward to speaking with you.
+
+Jacob Ross
+
+Technical Recruiter
+
+Vend.ly
+
+
+
+My Response:
+
+Hi Jacob,
+
+How are you?  Thank you for reaching out to me and for taking the time to review
+my application materials.  Here are some times that would work for me as well
+as my cell number:
+
+Monday Jan 14: anytime between 8-11pm EST (Easter Standard Time)
+Tuesday Jan 15: 2-5pm EST
+Thursday Jan 17: 7-9:30pm EST
+
+Cell: 555-555-5555
+
+Thank you and I'll await next steps,
+Benjamin Reinecke
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Notes for 3 video answers (reviewer, please do not read below)
+**********************************************************************
+
+
+
+Stiuation
+Task
+Action
+Result
+
+Employees focused on: work experience, work style, and how you deal with obstacles
+
+
+
+
+
+
+1. What unique qualities do you bring to this team?
+Problem Solving Framework
+Teaching skills **
+Communication skills
+Full Stack JavaScript NERDS Stack
+PhD in Chemical Engineering from Stanford University
+
+
+Teaching Skills---> I look for high level principles and
+come up with creative ways to teach those high level principles
+
+
+Situation: With student learning momentum in phsyics.  Task: teach her how to apply the conservation
+of momentum.  Action: I explained to her that conservation of momentum was simply a combination
+of newton's second and third law.  Result: She realized that conservation of momentum is
+not a new concept, but an amalgamation of two high level concepts that she always understands.
+
+Situation: Friend telling me about how a vaccine works.  Task: Understand how a vaccine works.
+Action: I reflected back to him that your immune system is like an army during peacetime.  The vaccine
+is a small amount of information that the army learns of how to attack a potential enemy.  Then, when the
+enemy attacks, they're prepared to fight the enemy.  Result: I understood how the vaccine worked and
+he was appreciative for a fresh perspective to teach others.
+
+
+
+
+
+
+2. Why are you interested in programming?
+
+I enjoy troubleshooting code----> Here's an example
+Situation: I had an error in a reddit clone project but didn't know where the error came from.  Task: add
+a topic resource to the application starting from the jasmine test.  Action: I stepped through the
+problem from test suite, to router, to controller, to db query interface.  When I found where the break
+point was, I realized that there was a syntax error in the require statement for the topic resource.  Result:
+I corrected the error and the tests passed.
+
+
+
+
+
+3. Tell me about a challenge you overcame.
+
+Situation: Confused by the complexity of the min cut problem, Task: Solve min cut graph problem,
+Action: Take a step back.  Write out an extremely simplified version start to finish to observe the
+algorithm in a specific example.  Result: Extended the specific example to a general algorithm and
+completed the problem.
+
+*****************************************************************************
