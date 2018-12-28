@@ -78,21 +78,32 @@ Employers focused on: work experience, work style, and how you deal with obstacl
 
 
 3. What unique qualities do you bring to this team?
-Problem Solving Framework
-Teaching skills **
-Communication skills
-Full Stack JavaScript NERDS Stack
-PhD in Chemical Engineering from Stanford University
+
+Aside from obvious full stack javascript skills---->
+
+A. Teaching skills ** (from: teaching), (why: teach new tech to colleagues)
+
+B. Problem Solving Skills** (teaching and PhD) (why: teach problem solving approaches to colleagues)
+
+C. Communication skills** ---> (theatre performances) (why: teaching concepts/processes clearly to colleagues)
 
 
-Teaching Skills---> I look for high level principles and
-come up with creative ways to teach those high level principles
+Teaching example:
+
+Situation: With student learning momentum in phsyics.  
+
+Task: teach her how to apply the conservation of momentum.  
+
+Action: I explained to her that conservation of momentum was simply a combination of newton's second and third law.  
+
+Result: She realized that conservation of momentum is not a new concept, but an amalgamation of two high level concepts that she always understands.
 
 
-Situation: With student learning momentum in phsyics.  Task: teach her how to apply the conservation
-of momentum.  Action: I explained to her that conservation of momentum was simply a combination
-of newton's second and third law.  Result: She realized that conservation of momentum is
-not a new concept, but an amalgamation of two high level concepts that she always understands.
+Unqique qualities i bring: teaching skills, problem solving skills, and communication skills.
+
+
+
+
 
 
 
@@ -101,6 +112,12 @@ Action: I reflected back to him that your immune system is like an army during p
 is a small amount of information that the army learns of how to attack a potential enemy.  Then, when the
 enemy attacks, they're prepared to fight the enemy.  Result: I understood how the vaccine worked and
 he was appreciative for a fresh perspective to teach others.
+
+
+
+
+
+
 
 
 
