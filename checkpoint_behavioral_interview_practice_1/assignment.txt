@@ -1,6 +1,12 @@
-Question 1 ---> vid1 unlisted link: https://youtu.be/mBgcHQL-3FE
+﻿Question 1 ---> vid1 unlisted link: https://youtu.be/mBgcHQL-3FE
 Question 2---> vid2 unlisted link: https://youtu.be/BjxEzgRxqG4
 Questions 3----> vid3 unlisted link: https://youtu.be/Pczeaf2NQRA
+
+
+Reasons interviewers ask behavioral questions:
+-work well with others (collaboration)
+-necessary communication skills (communication)
+-what you do when faced with a conflict or setback (resilience)
 
 
 
@@ -57,21 +63,21 @@ Benjamin Reinecke
 Notes for 3 video answers (reviewer, please do not read below)
 **********************************************************************
 
-
+Shoot for less than 90 seconds!!!!
 
 Stiuation
 Task
 Action
 Result
 
-Employees focused on: work experience, work style, and how you deal with obstacles
+Employers focused on: work experience, work style, and how you deal with obstacles
 
 
 
 
 
 
-1. What unique qualities do you bring to this team?
+3. What unique qualities do you bring to this team?
 Problem Solving Framework
 Teaching skills **
 Communication skills
@@ -87,6 +93,8 @@ Situation: With student learning momentum in phsyics.  Task: teach her how to ap
 of momentum.  Action: I explained to her that conservation of momentum was simply a combination
 of newton's second and third law.  Result: She realized that conservation of momentum is
 not a new concept, but an amalgamation of two high level concepts that she always understands.
+
+
 
 Situation: Friend telling me about how a vaccine works.  Task: Understand how a vaccine works.
 Action: I reflected back to him that your immune system is like an army during peacetime.  The vaccine
@@ -112,7 +120,7 @@ I corrected the error and the tests passed.
 
 
 
-3. Tell me about a challenge you overcame.
+1. Tell me about a challenge you overcame.
 
 Situation: Confused by the complexity of the min cut problem, Task: Solve min cut graph problem,
 Action: Take a step back.  Write out an extremely simplified version start to finish to observe the
@@ -120,3 +128,174 @@ algorithm in a specific example.  Result: Extended the specific example to a gen
 completed the problem.
 
 *****************************************************************************
+
+
+
+4. Tell me about yourself.
+
+
+
+S: PhD student/Post-Doc in chemical engineering, emphasized my love for problem solving, published 6 papers and actually enjoyed writing quite a few programs to analyze data along the way.  However, my field of study didn't align with my values anymore. Took a year off to travel the world and learn spanish, then taught chemistyr online for 2 years in the short  term.  There, developed problem solving frameworks to help students.  Took a month this past spring to reflect on what my ideal life actually looked like.  Decided that web development aligned with my values and gave me the opportunity to use my problem solving skills and interest in programming that I've developed as a scientist and teacher in order to help the world. 
+T: Become a full stack web developer
+A: Took a stanford algorithms class online, some prep courses in front and back end technologies, and then enrolled in a 4 month intensive full stack JS apprenticeship.  
+R: Made 9 applications split between front and back end using mostly express and react.
+ 
+
+
+OR
+
+Three adjectives friends would use to describe me: concientious, intelligent, intentional
+
+
+
+********************Should be technical, try to use bloc experience***************
+concientious--->
+S: Learning to surf in Portugal.
+T: Be able to stand up and ride a wave before it closed out.
+A: Repeatedly paddle out, and take every decent sized wave I could focusing on the three step get-up and keeping my eyes up.
+R: Desensitized myself to failure and discomfort and cultivated resilience to push through frustration
+
+
+
+
+What interests you in this role?
+Plated....
+eCommerce
+Cool idea, I love healthy and delicious food and I don't have much time to cook
+Software Engineering, Operations Tooling, work with different teams
+I can bring my experience as a teacher and scientist and provide a great systems approach
+I work a lot on mastering my own life system with a variety of different concerns
+I know NERDS stack plus 3rd party APIs
+
+
+
+
+
+What interests you in this company?
+Plated....
+eCommerce
+SAme as above
+Hoping to add value to the team using my unique perspectives
+
+
+
+
+********************Should be technical, try to use bloc experience***************
+Tell me about one of your accomplishments (non-technical)?
+
+S: Starting my own improv group in Sweden
+T: Put together a final performance in front of 40 person live audience before leaving sweden
+A: Practiced 2 times a week for 8 months.  Helped put together the bit list for the final show.  Performed in 30 percent of the bits over 1 hour of performance.
+R: Audience laughs and rave reviews.  Several people from the audience joined the troupe they were so interested.
+
+
+
+Tell me about a project that you've done that you're proud of.
+
+S: I spend a lot of time assigning external links for homeworks to my chemistyr students
+T: Build an app to automate online homework assignments
+A: Design the app from the backend, write user stories, and implement highest value user stories in a 2 week sprint
+R: Completed 5 user stories.  User can do multiple problems and see results history page.
+
+
+
+
+
+Tell me about a conflict you had with a colleague/client.
+S: Calc student's mother telling me that we need to get through more calc problems in one session
+T: Get her to understand why that's not a good idea, what my approach is and why it's in 
+alignment with their goals.
+A: I explained to her that her daughter is having difficulty in a calc problem in areas of math from 1,2,3,4 years ago, so I take the time to teach her each of the topics until she gets it and can make it through the entire problem.  If we go faster than that, she probably won't pick up anything.
+R: The mother and daughter more clearly understood my process and saw that my approach was aactully in alignment with their overall purpose of improving her grade.
+
+
+
+
+
+Tell me about a time when you needed to work with others:
+
+S: PhD project
+T: Gain computational validation/insight on model generated from experimental data
+A: interfaced with computational team to design simulation to input into model and compare with output of experimental data from the model
+R: Surface Science paper publication between both groups
+
+
+
+
+What's the most interesting thing you learned while at Bloc?
+
+Process of "scope diving".  High, mid, low.  Product design or debugging.  More of a meta level process based skill, not a specific concrete skill like how to solve a fibonacci problem.  Transferrable to anything in life.
+
+S: I was planning my capstone project.  
+T: Making a chemical equation balancing web app.
+A: Start with an epic explanation of porject.  Then break them into smaller user stories.  
+Then sketch out the model, view, and controller interworkings.  Then Write out individual 
+tasks to complete for each story.
+R: Able to complete 5 user stories in a 2 week sprint.
+
+
+
+
+What's your biggest weakness?
+
+Real time empathy
+
+S: Me and a friend were in Colombia on vacation together talking to some other new friends.  He told me that I wasn't addressing him as much as the new people.
+T: Take his feedback to heart.
+A: Since then, when I talk in a group, number one I listen more than I talk, and number two I make a point to make eye contact with each person relatively evenly
+R: My friends and colleagues feel more included in the conversation.
+
+
+
+Whats importatnt to you when thinking about where you work?
+
+Two qualities that are very rare to find together: intelligence (usually a given) and sense of humor
+
+S: Me and another research colleague were running experiments late into the night and had some dead air to spend.
+T: Run the experiments and enjoy our waiting in between time
+A: We told each other jokes to pass the time instead of awkwardly standing there and not talking.
+R: We both laughed and had a great time while completed what we needed to.
+
+
+
+
+
+
+Where do you see yourself in 5 years?
+
+My career purpose is to continually learn and master web development and go wherever that takes me.  I don't focus on concrete goals longer than 6 months, I focus more on perfecting process than getting a certain outcome.  You will execute well on opportunities if you have good long term process. 
+
+S: 
+
+
+
+technical (60 min)  2 intermed diff programming challenges. comp sice , data structures, algroithems, emphasis: speak as you solve...can use liibraries...string manip, linked list (will give definition)
+take home...spec showing project to build...recommend 5 days.. grad date: 
+
+
+good detail with phone screen...I gave examples so that was good.  Don't be abstract...Can talk about tech and be nice.
+
+
+
+
+
+Questions for interviewer:
+
+Jason LaChapelle: Jack Henry and Associates
+
+How did you get into programming?
+Why do you like programming?
+How do you balance logic/focus with fun/amusement given that programming is logical?
+
+
+What's your favorite thing about working there?
+What's the biggest challenge the company is facing today?
+What are the most important qualities to have as an employee like you at JHA?
+
+
+
+DRY ---
+one way binding vs two way binding
+
+
+ 
